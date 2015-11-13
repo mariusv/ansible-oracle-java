@@ -5,4 +5,4 @@
   shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
 
 - name: Updating and installing Oracle Java
-  apt: name=oracle-java7-installer state=present update_cache=yes
+  apt: name=oracle-java8-installer state=present update_cache=yes

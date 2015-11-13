@@ -1,0 +1,16 @@
+---
+- hosts: all
+  sudo: yes
+  tasks: 
+
+  - name: Adding the PPA for the Oracle Java install
+    apt_repository: repo='ppa:webupd8team/java'
+
+  - name: Automatically select the Oracle License
+    shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+
+  - name: Updating and installing Oracle Java
+    apt: name={{ item }} state=present update_cache=yes
+    with_items:
+        - oracle-java8-installer
+        - oracle-java7-installer
